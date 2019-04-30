@@ -1,8 +1,11 @@
 extends Area2D
 
+#variables
 export var speed = 400 #o quão rápido o jogador vai se mover
 var screen_size # tamanho da janela do jogo
 
+#Signals
+signal hit
 
 func _ready():
 	hide()
@@ -43,3 +46,13 @@ func move(delta):
 
 func update_animations():
 	pass
+
+func _on_Player_body_entered(body):
+	hide()
+	emit_signal("hit")
+	$CollisionShape2D.call_deferred("set_disabled", true) #Seta a colisão como off pra não chamar o sinal multiplas vezes.
+
+func start(pos):
+	position = pos
+	show()
+	$CollisionShape2D.disabled = false
