@@ -11,5 +11,5 @@ dest_files=[ "res://.import/House In a Forest Loop.ogg-1a6a72ae843ad792b70399312
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

@@ -9,12 +9,15 @@ func _ready():
 
 #game over
 func _on_Player_hit(): 
+	$DeathSFX.play()
 	$Timers/ScoreTimer.stop()
 	$Timers/MobTimer.stop()
 	$HUD.show_game_over()
+	$Music.stop()
 
-func new_game():	
+func new_game():
 	score = 0
+	$Music.play()
 	$HUD.update_score(score)
 	$Player.start($StartPosition.position)
 	$Timers/StartTimer.start()
